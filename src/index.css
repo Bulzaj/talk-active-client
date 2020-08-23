@@ -11,8 +11,7 @@ body  {
 }
 
 main {
-  margin-left: 5rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 body::-webkit-scrollbar{

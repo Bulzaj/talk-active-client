@@ -19,7 +19,3 @@
 .NavLink:hover {
     background-color: var(--bg-secondary);
 }
-
-svg .fa-primary {
-    color: #df49a6;
-}

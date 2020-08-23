@@ -7,7 +7,7 @@ const Navbar = props => {
 
   return (
     <nav className={styles.navbar}>
-      <ul className={styles.navbarNav}>
+      <ul>
         {props.children}
       </ul>
     </nav>

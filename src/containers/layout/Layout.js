@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import NavItem from "../../components/navbar/nav-item/NavItem";
 import NavLink from "../../components/navbar/nav-link/NavLink";
 
-import * as icons from "../../components/icons/icons";
+import {faCoffee} from "@fortawesome/free-solid-svg-icons";
 
 const Layout = props => {
   return (
@@ -14,28 +14,21 @@ const Layout = props => {
         <Navbar>
           <NavItem>
             <NavLink
-              linkText='FireShip'
-              svgImage={icons.fireShip}/>
+              icon={faCoffee}
+              linkText='Login'
+            />
           </NavItem>
           <NavItem>
             <NavLink
-              linkText='Cats'
-              svgImage={icons.cats}/>
+              icon={faCoffee}
+              linkText='coffee'
+            />
           </NavItem>
           <NavItem>
             <NavLink
-              linkText='Aliens'
-              svgImage={icons.aliens}/>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              linkText='Space'
-              svgImage={icons.space}/>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              linkText='Shuttle'
-              svgImage={icons.shuttle}/>
+              icon={faCoffee}
+              linkText='coffee'
+            />
           </NavItem>
         </Navbar>
 
