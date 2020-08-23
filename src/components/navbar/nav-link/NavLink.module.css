@@ -1,0 +1,25 @@
+.NavLink {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.NavLink svg {
+    min-width: 2rem;
+    margin: 0 1.5rem
+}
+
+.NavLink span {
+    display: none;
+    margin-left: 1rem;
+}
+
+.NavLink:hover {
+    background-color: var(--bg-secondary);
+}
+
+svg .fa-primary {
+    color: #df49a6;
+}
