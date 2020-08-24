@@ -17,5 +17,5 @@
 }
 
 .NavLink:hover {
-    background-color: var(--bg-secondary);
+    background-color: var(--nav-bg-secondary);
 }

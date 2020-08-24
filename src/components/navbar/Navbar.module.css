@@ -1,7 +1,7 @@
 .navbar {
     position: fixed;
     bottom: 0;
-    background-color: var(--bg-primary);
+    background-color: var(--nav-bg-primary);
     width: 100%
 }
 
