@@ -4,7 +4,7 @@ const initState = {
   authenticated: false
 }
 
-export const auth = (state = initState, action) => {
+export const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_SUCCESS:
       return {
@@ -15,4 +15,4 @@ export const auth = (state = initState, action) => {
   }
 }
 
-export default auth;
+export default authReducer;

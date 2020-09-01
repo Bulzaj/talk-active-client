@@ -1,1 +1,3 @@
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+
+export const TOGGLE_SIDE_DRAWER = 'TOGGLE_SIDE_DRAWER';

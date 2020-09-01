@@ -1,5 +1,4 @@
 :root {
-  font-size: 16px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -8,10 +7,6 @@ body  {
   border: 0;
   color: black;
   backgorund-color: white
-}
-
-main {
-  padding: 1rem;
 }
 
 body::-webkit-scrollbar{
