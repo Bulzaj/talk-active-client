@@ -12,7 +12,7 @@ const Communicator = props => {
   }, [keycloak]);
 
   return (
-    <h1>Hi</h1>
+    null
   )
 }
 
