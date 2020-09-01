@@ -6,14 +6,13 @@ import App from './containers/app/App';
 import * as serviceWorker from './serviceWorker';
 
 import {store} from "./store/store";
-import {auth} from "./store/reducers/auth";
 import {Provider} from 'react-redux'
 import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store(auth)}>
+      <Provider store={store()}>
         <App />
       </Provider>
     </BrowserRouter>
