@@ -4,6 +4,17 @@ import {useDispatch, useSelector} from "react-redux";
 import {authSuccess} from "../../store/actions/authActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import SideDrawer from "../../components/drawer/SideDrawer";
+import {Toolbar} from "@material-ui/core";
+
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => (
+  {
+    root: {
+      display: 'flex'
+    }
+  }
+))
 
 const Communicator = props => {
 
@@ -13,6 +24,8 @@ const Communicator = props => {
     {username: 'tester3', userId:3},
     {username: 'tester4', userId:4}
   ]
+
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const authenticated = useSelector(state => state.auth.authenticated);
@@ -31,9 +44,9 @@ const Communicator = props => {
   let communicator = <CircularProgress />
   if (authenticated) {
     communicator = (
-      <div>
+      <div className={classes.root}>
         <SideDrawer contacts={tmpContacts} />
-        <h1>Authenicated</h1>
+        <h1>Authenticated</h1>
       </div>
     )
   }

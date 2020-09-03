@@ -2,6 +2,7 @@ import React from "react";
 import styles from './Layout.module.css'
 import TopNav from "../../components/navbar/TopNav";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import {Toolbar} from "@material-ui/core";
 
 const Layout = props => {
 
@@ -12,6 +13,7 @@ const Layout = props => {
         <TopNav />
       </nav>
       <main>
+        <Toolbar />
         {props.children}
       </main>
     </div>
