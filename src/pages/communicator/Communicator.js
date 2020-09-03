@@ -48,7 +48,7 @@ const Communicator = props => {
     communicator = (
       <div className={classes.root}>
         <SideDrawer contacts={tmpContacts} />
-        <Route path={props.match.path+'/to'} component={Conversation}/>
+        <Route path={props.match.path+`/to/:conversationId`} component={Conversation}/>
       </div>
     )
   }
