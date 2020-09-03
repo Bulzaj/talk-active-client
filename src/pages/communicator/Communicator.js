@@ -4,9 +4,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {authSuccess} from "../../store/actions/authActions";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import SideDrawer from "../../components/drawer/SideDrawer";
-import {Toolbar} from "@material-ui/core";
 
 import {makeStyles} from "@material-ui/core/styles";
+import Conversation from "../../containers/conversation/Conversation";
+import {Route, withRouter} from "react-router-dom";
 
 const useStyles = makeStyles(theme => (
   {
@@ -33,6 +34,7 @@ const Communicator = props => {
 
 
   useEffect(() => {
+    console.log(props.match)
     keycloak
       .init({onLoad: 'login-required'})
       .then(authenticated => {
@@ -46,7 +48,7 @@ const Communicator = props => {
     communicator = (
       <div className={classes.root}>
         <SideDrawer contacts={tmpContacts} />
-        <h1>Authenticated</h1>
+        <Route path={props.match.path+'/to'} component={Conversation}/>
       </div>
     )
   }
