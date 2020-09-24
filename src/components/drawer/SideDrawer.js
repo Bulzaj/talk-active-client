@@ -6,6 +6,8 @@ import {toggleSideDrawer} from "../../store/actions/sideDrawerActions";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import {makeStyles} from "@material-ui/core/styles";
+import {useHistory} from 'react-router-dom';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 const sideDrawerWidth = 233;
 
@@ -17,14 +19,14 @@ const useStyles = makeStyles(theme => (
     },
     drawerPaper: {
       width: sideDrawerWidth
-    }
+    },
   }
 ));
 
 const SideDrawer = props => {
-
   const dispatch = useDispatch();
   const isOpen = useSelector(state => state.sideDrawer.isOpen);
+  const history = useHistory();
 
   const classes = useStyles();
 
@@ -32,14 +34,40 @@ const SideDrawer = props => {
     return dispatch(toggleSideDrawer());
   }
 
-  const list = (
-    props.contacts.map(contact => (
+  const handleConversationClick = (conversationName) => {
+    console.log(conversationName);
+    history.push('/talk/to/'+conversationName);
+  }
+
+  const conversationsList = (
+    <div>
       <List>
-        <ListItem button key={contact.userId}>
-          <ListItemText primary={contact.username} key={contact.userId}/>
-        </ListItem>
+        {props.contacts.map(conversation => (
+          <ListItem
+            button
+            key={conversation.conversationName}
+            onClick={() => handleConversationClick(conversation.conversationName)}
+          >
+            <ListItemText
+              primary={conversation.conversationName}
+              key={conversation.conversationName}
+            />
+            {conversation.isRead ? null : <MailOutlineIcon />}
+          </ListItem>
+        ))}
       </List>
-    )))
+    </div>
+  )
+  //
+  // const list = (
+  //   <List>
+  //   props.contacts.map(contact => (
+  //       <ListItem button key={contact.userId}>
+  //         <ListItemText primary={contact.username} key={contact.userId}/>
+  //       </ListItem>
+  //   ))
+  //   </List>
+  // )
 
   return (
     <div>
@@ -52,7 +80,7 @@ const SideDrawer = props => {
           onClose={handleDrawerToggle}
           variant='temporary'>
           <Divider />
-          {list}
+          {conversationsList}
         </Drawer>
       </Hidden>
       <Hidden xsDown>
@@ -62,7 +90,7 @@ const SideDrawer = props => {
           open
           variant='permanent'>
           <Toolbar />
-          {list}
+          {conversationsList}
         </Drawer>
       </Hidden>
     </div>

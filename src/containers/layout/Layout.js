@@ -12,7 +12,7 @@ const Layout = props => {
       <nav>
         <TopNav />
       </nav>
-      <main>
+      <main className='clasclas'>
         <Toolbar />
         {props.children}
       </main>

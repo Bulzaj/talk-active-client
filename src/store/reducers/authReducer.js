@@ -1,7 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
-  authenticated: false
+  authenticated: false,
+  accessToken: null,
+  logout: null,
+  error: null
 }
 
 export const authReducer = (state = initState, action) => {
@@ -9,7 +12,18 @@ export const authReducer = (state = initState, action) => {
     case actionTypes.AUTH_SUCCESS:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        accessToken: action.accessToken,
+        logout: action.logout,
+        error: null
+      }
+    case actionTypes.AUTH_FAIL:
+      return {
+        ...state,
+        authenticated: false,
+        error: action.error,
+        accessToken: null,
+        logout: null
       }
     default: return state
   }
