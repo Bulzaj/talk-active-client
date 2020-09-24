@@ -45,12 +45,12 @@ const SideDrawer = props => {
         {props.contacts.map(conversation => (
           <ListItem
             button
-            key={conversation.conversationName}
-            onClick={() => handleConversationClick(conversation.conversationName)}
+            key={conversation}
+            onClick={() => handleConversationClick(conversation)}
           >
             <ListItemText
-              primary={conversation.conversationName}
-              key={conversation.conversationName}
+              primary={conversation}
+              key={conversation}
             />
             {conversation.isRead ? null : <MailOutlineIcon />}
           </ListItem>

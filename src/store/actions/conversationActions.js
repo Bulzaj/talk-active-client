@@ -23,8 +23,22 @@ const fetchConversationsListFail = (err) => {
   }
 }
 
+const fetchConversationsListSuccess = (conversations) => {
+  return {
+    type: actionTypes.FETCH_CONVERSATIONS_LIST_SUCCESS,
+    conversations: conversations
+  }
+}
+
+const clearConversationsList = () => {
+  return {
+    type: actionTypes.CLEAR_CONVERSATIONS_LIST
+  }
+}
+
 export const fetchConversationsList = (accessToken) => {
   return dispatch => {
+    dispatch(clearConversationsList())
     const config = {
       headers: {
         'Authorization': 'Bearer ' + accessToken,
@@ -33,7 +47,7 @@ export const fetchConversationsList = (accessToken) => {
     axios.get(CONVERSATIONS_STORAGE_URL, config)
       .then(response => {
         console.log(response)
-        response.data.map(conversation => dispatch(addConversationToList(conversation.conversationMember)))
+        dispatch(fetchConversationsListSuccess(response.data.conversationsParticipants));
       })
       .catch(err => dispatch(fetchConversationsListFail(err.body)));
   }

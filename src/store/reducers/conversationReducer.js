@@ -37,17 +37,23 @@ const conversationReducer = (state = initialState, action) => {
         messages: state.messages.concat(action.messages)
       }
     case actionTypes.ADD_CONVERSATION_TO_LIST:
-      if (!state.conversations.some(c => c.conversationName === action.conversationName)) {
-        const conversationObj = {
-          conversationName: action.conversationName,
-          isRead: false
-        }
+      if (!state.conversations.some(c => c.conversationName !== action.conversationName)) {
+        // const conversationObj = {
+        //   conversationName: action.conversationName,
+        //   isRead: false
+        // }
         return {
           ...state,
-          conversations: state.conversations.concat(conversationObj)
+          conversations: state.conversations.concat(action.conversationName)
         }
       }
       return state;
+    case actionTypes.FETCH_CONVERSATIONS_LIST_SUCCESS:
+      return {
+        ...state,
+        conversations: action.conversations,
+        error: null
+      }
     default: return state;
   }
 }
