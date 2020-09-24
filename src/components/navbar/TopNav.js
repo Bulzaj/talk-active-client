@@ -12,6 +12,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {makeStyles} from "@material-ui/core/styles";
 import {Route, useHistory} from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
+import SwitchControl from "../switchControl/SwitchControl";
+import {incognitoModeChanged} from "../../store/actions/incognitoModeActions";
+import CloudOffIcon from '@material-ui/icons/CloudOff';
 
 const useStyles = makeStyles(theme => (
   {
@@ -39,6 +42,7 @@ const TopNav = props => {
   const authenticated = useSelector(state => state.auth.authenticated);
   const logout = useSelector(state => state.auth.logout);
   const currentUser = useSelector(state => state.currentUser.username);
+  const isIncognitoMode = useSelector(state => state.incognitoMode.isIncognitoMode);
 
   const history = useHistory();
 
@@ -46,6 +50,10 @@ const TopNav = props => {
 
   const handleSideDrawerButtonOnClick = () => {
     return dispatch(toggleSideDrawer());
+  }
+
+  const handlerIncognitoButtonClicked = () => {
+    dispatch(incognitoModeChanged());
   }
 
   const handleMenuOnOpen = event => {
@@ -79,6 +87,14 @@ const TopNav = props => {
   if (authenticated && currentUser) {
     profileButton = (
       <div>
+        {isIncognitoMode? (
+          <IconButton
+          color='inherit'
+          edge='start'
+          onClick={handlerIncognitoButtonClicked}>
+          <CloudOffIcon />
+          </IconButton>
+          ) : null}
         <IconButton
           color='inherit'
           edge='end'
@@ -91,6 +107,12 @@ const TopNav = props => {
           open={Boolean(anchorEl)}
           onClose={handleMenuOnClose}>
           <MenuItem disabled={true}>{currentUser}</MenuItem>
+          <MenuItem>
+            <SwitchControl
+              name='incognitoModeCheck'
+              label='Incognito Mode'
+              />
+          </MenuItem>
           <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
         </Menu>
       </div>

@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button";
 import SendIcon from '@material-ui/icons/Send';
 import Card from "@material-ui/core/Card";
 import {useTheme} from "@material-ui/core";
+import CloudOffIcon from '@material-ui/icons/CloudOff';
 
 const useStyles = makeStyles(theme => (
   {
@@ -49,6 +50,7 @@ const Conversation = props => {
   const currentUser = useSelector(state => state.currentUser.username);
   const stompClient = useSelector(state => state.websocket.stompClient);
   const messages = useSelector(state => state.conversation.messages);
+  const isIncognitoMode = useSelector(state => state.incognitoMode.isIncognitoMode);
 
   const dispatch = useDispatch();
   const [messageBody, setMessageBody] = useState('');
@@ -86,11 +88,12 @@ const Conversation = props => {
 
   const handleSendMessage = event => {
     event.preventDefault();
+    const messageType = isIncognitoMode? 'INCOGNITO' : 'NORMAL';
     const message = {
       messageBody: messageBody,
       senderName: currentUser,
       receiverName: selectedContact,
-      messageType: 'NORMAL',
+      messageType: messageType,
       createdAt: Date.now()
     };
     if (stompClient) stompClient.send('/app/send', {accessToken: accessToken}, JSON.stringify(message));
@@ -127,7 +130,8 @@ const Conversation = props => {
       const messageObj = {
         messageBody: msg.messageBody,
         senderName: msg.senderName,
-        createdAt: msg.createdAt
+        createdAt: msg.createdAt,
+        messageType: msg.messageType
       }
       let style = null;
       if (messageObj.senderName === currentUser) {
@@ -136,6 +140,7 @@ const Conversation = props => {
           color: "white"
         }
       }
+      console.log(messageObj);
       return (
         <Box className={classes.messageBox} boxShadow={2}>
           <Card>
@@ -143,7 +148,9 @@ const Conversation = props => {
               <Typography variant='body1'>{messageObj.messageBody}</Typography>
               <Divider />
               <Typography variant='caption'>
-                {messageObj.senderName} {new Date(messageObj.createdAt).toLocaleString()}
+                {messageObj.senderName}
+                {new Date(messageObj.createdAt).toLocaleString()}
+                {messageObj.messageType === 'INCOGNITO'? <CloudOffIcon/> : null}
               </Typography>
             </CardContent>
           </Card>

@@ -6,6 +6,7 @@ import conversationReducer from "./reducers/conversationReducer";
 import thunk from "redux-thunk";
 import currentUserReducer from "./reducers/currentUserReducer";
 import websocketReducer from "./reducers/websocketReducer";
+import incognitoModeReducer from "./reducers/incognitoModeReducer";
 
 const reducers = combineReducers({
   auth: authReducer,
@@ -13,7 +14,8 @@ const reducers = combineReducers({
   conversation: conversationReducer,
   sideDrawer: sideDrawerReducer,
   currentUser: currentUserReducer,
-  websocket: websocketReducer
+  websocket: websocketReducer,
+  incognitoMode: incognitoModeReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
