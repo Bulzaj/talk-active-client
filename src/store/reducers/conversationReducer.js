@@ -38,10 +38,6 @@ const conversationReducer = (state = initialState, action) => {
       }
     case actionTypes.ADD_CONVERSATION_TO_LIST:
       if (!state.conversations.some(c => c.conversationName !== action.conversationName)) {
-        // const conversationObj = {
-        //   conversationName: action.conversationName,
-        //   isRead: false
-        // }
         return {
           ...state,
           conversations: state.conversations.concat(action.conversationName)
