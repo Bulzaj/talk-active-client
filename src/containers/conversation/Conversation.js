@@ -15,6 +15,8 @@ import SendIcon from '@material-ui/icons/Send';
 import Card from "@material-ui/core/Card";
 import {useTheme} from "@material-ui/core";
 import CloudOffIcon from '@material-ui/icons/CloudOff';
+import IconButton from "@material-ui/core/IconButton";
+import {incognitoModeChanged} from "../../store/actions/incognitoModeActions";
 
 const useStyles = makeStyles(theme => (
   {
@@ -104,6 +106,10 @@ const Conversation = props => {
     setMessageBody(event.target.value);
   }
 
+  const handleIncognitoModeChangeClick = () => {
+    dispatch(incognitoModeChanged());
+  }
+
   let messageInput = null;
   if (selectedContact) {
     messageInput = (
@@ -150,7 +156,14 @@ const Conversation = props => {
               <Typography variant='caption'>
                 {messageObj.senderName}
                 {new Date(messageObj.createdAt).toLocaleString()}
-                {messageObj.messageType === 'INCOGNITO'? <CloudOffIcon/> : null}
+                {messageObj.messageType === 'INCOGNITO'? (
+                  <IconButton
+                    color='inherit'
+                    edge='end'
+                    onClick={handleIncognitoModeChangeClick}>
+                    <CloudOffIcon />
+                  </IconButton>
+                ) : null}
               </Typography>
             </CardContent>
           </Card>
