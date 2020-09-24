@@ -55,25 +55,27 @@ const Conversation = props => {
 
   // select contact
   useEffect(() => {
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
-    }
-    axios.get(KEYCLOAK_USERS_URL+`?username=${userParam.conversationId}`, config)
-      .then(response => {
-        const selectedContact = response.data[0].username;
-        if (selectedContact === currentUser) {
-          history.push('/talk');
-          dispatch(contactSelectedFail('you cant write to yourself'));
+    if (currentUser) {
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
         }
-        else if (response.data.length !== 1) history.push('/talk');
-        else dispatch(contactSelectedSuccess(selectedContact))
-      })
-      .catch(err => {
-        history.push('/talk');
-      })
-  }, [userParam.conversationId]);
+      }
+      axios.get(KEYCLOAK_USERS_URL+`?username=${userParam.conversationId}`, config)
+        .then(response => {
+          const selectedContact = response.data[0].username;
+          if (selectedContact === currentUser) {
+            history.push('/talk');
+            dispatch(contactSelectedFail('you cant write to yourself'));
+          }
+          else if (response.data.length !== 1) history.push('/talk');
+          else dispatch(contactSelectedSuccess(selectedContact))
+        })
+        .catch(err => {
+          history.push('/talk');
+        })
+    }
+  }, [userParam.conversationId, currentUser]);
 
   // fetch messages
   useEffect(() => {
