@@ -8,7 +8,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import SideDrawer from "../../components/drawer/SideDrawer";
 import {makeStyles} from "@material-ui/core/styles";
-import Conversation from "../../containers/conversation/Conversation";
+import Conversation from "../conversation/Conversation";
 import {Route, useHistory} from "react-router-dom";
 import SearchBox from "../../components/searchBox/SearchBox";
 import axios from 'axios'
