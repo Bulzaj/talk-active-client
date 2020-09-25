@@ -73,10 +73,11 @@ export const addMessagesToList = (messages) => {
   }
 }
 
-export const addConversationToList = (conversationName) => {
+export const addConversationToList = (msgObj, currentUser) => {
   return {
     type: actionTypes.ADD_CONVERSATION_TO_LIST,
-    conversationName: conversationName
+    msgObj: msgObj,
+    currentUser: currentUser
   }
 }
 

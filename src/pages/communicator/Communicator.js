@@ -99,7 +99,7 @@ const Communicator = props => {
           subscription = stompClient.subscribe(`/queue/reply/${currentUser}`, message => {
             const msgObj = JSON.parse(message.body);
             dispatch(fetchNewMessage(msgObj));
-            dispatch(addConversationToList(msgObj.receiverName));
+            dispatch(addConversationToList(msgObj, currentUser));
           });
           dispatch(onSubscribeSuccess(subscription));
         }
