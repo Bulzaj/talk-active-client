@@ -53,10 +53,11 @@ export const fetchConversationsList = (accessToken) => {
   }
 }
 
-export const fetchNewMessage = (message) => {
+export const fetchNewMessage = (msgObj, currentUser) => {
   return {
     type: actionTypes.FETCH_NEW_MESSAGE,
-    message: message
+    msgObj: msgObj,
+    currentUser: currentUser
   }
 }
 

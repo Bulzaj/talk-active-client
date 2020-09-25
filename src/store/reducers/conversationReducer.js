@@ -22,10 +22,20 @@ const conversationReducer = (state = initialState, action) => {
         error: action.error
       }
     case actionTypes.FETCH_NEW_MESSAGE:
-      return {
-        ...state,
-        messages: state.messages.concat(action.message)
+      if (action.msgObj.senderName === action.currentUser) {
+        return {
+          ...state,
+          messages: state.messages.concat(action.msgObj)
+        }
       }
+      if (state.selectedContact === action.msgObj.senderName){
+        console.log('if runs')
+        return {
+          ...state,
+          messages: state.messages.concat(action.msgObj)
+        }
+      }
+      return state;
     case actionTypes.CLEAR_MESSAGES_LIST:
       return {
         ...state,
