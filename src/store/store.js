@@ -23,8 +23,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_D
 export const store = () => {
   return createStore(reducers,
     compose(
-      applyMiddleware(thunk),
-      composeEnhancers
+      applyMiddleware(thunk)
+      // composeEnhancers
     ));
 
 }

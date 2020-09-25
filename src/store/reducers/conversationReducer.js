@@ -29,7 +29,6 @@ const conversationReducer = (state = initialState, action) => {
         }
       }
       if (state.selectedContact === action.msgObj.senderName){
-        console.log('if runs')
         return {
           ...state,
           messages: state.messages.concat(action.msgObj)

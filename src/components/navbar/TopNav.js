@@ -19,11 +19,7 @@ import CloudOffIcon from '@material-ui/icons/CloudOff';
 const useStyles = makeStyles(theme => (
   {
     appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      // [theme.breakpoints.up('sm')]: {
-      //   width: 240,
-      //   flexShrink: 0
-      // }
+      zIndex: theme.zIndex.drawer + 1
     },
     menuButton: {
       marginRight: theme.spacing(2)

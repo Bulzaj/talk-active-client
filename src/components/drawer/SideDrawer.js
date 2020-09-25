@@ -35,7 +35,6 @@ const SideDrawer = props => {
   }
 
   const handleConversationClick = (conversationName) => {
-    console.log(conversationName);
     history.push('/talk/to/'+conversationName);
   }
 
@@ -58,16 +57,6 @@ const SideDrawer = props => {
       </List>
     </div>
   )
-  //
-  // const list = (
-  //   <List>
-  //   props.contacts.map(contact => (
-  //       <ListItem button key={contact.userId}>
-  //         <ListItemText primary={contact.username} key={contact.userId}/>
-  //       </ListItem>
-  //   ))
-  //   </List>
-  // )
 
   return (
     <div>

@@ -46,7 +46,6 @@ export const fetchConversationsList = (accessToken) => {
     }
     axios.get(CONVERSATIONS_STORAGE_URL, config)
       .then(response => {
-        console.log(response)
         dispatch(fetchConversationsListSuccess(response.data.conversationsParticipants));
       })
       .catch(err => dispatch(fetchConversationsListFail(err.body)));
@@ -92,7 +91,6 @@ export const fetchMessagesList = (conversationMember, accessToken) => {
     }
     axios.get(CONVERSATIONS_STORAGE_URL + `messages/${conversationMember}`, config)
       .then(response => {
-        console.log(response.data)
         dispatch(addMessagesToList(response.data));
       })
       .catch(err => {

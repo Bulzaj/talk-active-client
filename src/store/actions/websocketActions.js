@@ -21,6 +21,7 @@ export const onSubscribeSuccess = (subscription) => {
   }
 }
 
+//todo: handle on subscribe fail
 export const onSubscribeFail = (err) => {
   return {
     type: actionTypes.ON_SUBSCRIBE_FAIL,

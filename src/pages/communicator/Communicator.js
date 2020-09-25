@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => (
     Container: {
       display: 'flex',
       flexDirection: 'column',
-      // marginTop: 13,
       height: '100%',
       padding: 13
     }
@@ -57,7 +56,6 @@ const Communicator = props => {
     keycloak
       .init({onLoad: 'login-required'})
       .then(authenticated => {
-        console.log(keycloak)
         dispatch(authSuccess(keycloak));
         dispatch(fetchCurrentUser(keycloak.token));
       })

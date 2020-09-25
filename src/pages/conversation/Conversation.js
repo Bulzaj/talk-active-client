@@ -146,7 +146,6 @@ const Conversation = props => {
           color: "white"
         }
       }
-      console.log(messageObj);
       return (
         <Box className={classes.messageBox} boxShadow={2}>
           <Card>
@@ -171,25 +170,6 @@ const Conversation = props => {
       )
     })
   }
-  // if (messages.length !== 0 && accessToken) {
-  //   console.log(messages.length)
-  //   console.log(messages)
-  //   const messageObj = messages.map(msg => {
-  //     // return JSON.parse(msg);
-  //   })
-  //   const filtered = messageObj.filter(msg => msg.receiverName === selectedContact);
-  //   conversationOutput = filtered.map(msg => {
-  //     return (
-  //       <Box className={classes.messageBox}>
-  //         <Card>
-  //           <CardContent>
-  //             <Typography>{msg.messageBody}</Typography>
-  //           </CardContent>
-  //         </Card>
-  //       </Box>
-  //     )
-  //   })
-  // }
 
   return (
       <Container className={classes.conversationBox}>
