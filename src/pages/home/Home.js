@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const Home = props => {
 
@@ -16,11 +16,17 @@ const Home = props => {
       style={{ minHeight: '100%' }}
     >
 
-      <Grid item xs={3}>
-        <Typography>Welcome</Typography>
-        <Typography>And</Typography>
-        <Button><Link to='/talk'>GetStarted</Link></Button>
-      </Grid>
+      <Box display="flex" flexDirection={"column"}>
+        <Box >
+          <Typography align='center' variant='h1' color='primary'>Welcome</Typography>
+        </Box>
+        <Box>
+          <Typography align='center' variant='h3' color='secondary'>And</Typography>
+        </Box>
+        <Box display='flex' justifyContent='center'>
+          <Button size='large' variant='contained' color='primary' href='/talk'>Get Started</Button>
+        </Box>
+      </Box>
 
     </Grid>
   )
